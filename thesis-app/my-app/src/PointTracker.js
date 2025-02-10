@@ -1,16 +1,18 @@
 import React , {useState} from 'react';
 
-function PointTracker({point, setPoint}) {
-    const[count, setCount] = useState(0);
-
+function PointTracker({pointValue}) {
+  /*  const[count, setCount] = useState(0);
     function addPoint() {
         setCount(count + 10);
-        
-    }
+    }*/
+
+
     return (
-        <div>
-            <h1>Point Tracker: {count}</h1>
-            <button onClick={addPoint}>Add 10 points</button>
+        <div className='point-tracker'>
+            <h1>Point Tracker</h1>
+            <h1 className='points'>Points: {pointValue}</h1>
         </div>
     )
 }
+
+export default PointTracker;
