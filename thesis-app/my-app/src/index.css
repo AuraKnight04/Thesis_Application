@@ -107,11 +107,11 @@ button:hover {
   background-color: #3e8e41;
 }
 
-.delete-task-button {
+.complete-task-button {
   background-color: #f44336;
 }
 
-.delete-task-button:hover {
+.complete-task-button:hover {
   background-color: #d32f2f;
 }
 

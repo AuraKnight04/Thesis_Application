@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import TaskItem from './TaskItem';
+import App from "./App.js";
 
-function TaskList() {
+function TaskList({handleIncrement}) {
+    // import the handle increment function from App.js so that in the Complete Task function it will also increment the point and task values
     const [tasks, setTasks] = useState(["Task 1", "Task 2", "Task 3"]);
     const [text, setText] = useState('');
     const [point, setPoint] = useState(0);
@@ -20,14 +22,10 @@ function addTask() {
             setText("");
         }
       }
- function deleteTask(id) {
-    setTasks(tasks.map(task => {
-        if (task.id === id) {
-        return {...task, completed: !task.completed};
-        } else {
-        return task;
-        } 
-        }));
+ function completeTask(index) {
+    const  updatedTaskList = tasks.filter((element, i) => i !== index);
+    setTasks(updatedTaskList);
+    handleIncrement();
  }
 
  function handleChange(event) {
@@ -35,25 +33,25 @@ function addTask() {
  }
 
 
- function moveTaskUp(id) {
-     
+ function moveTaskUp(index) {
+     if (index > 0) {
+        const updatedTaskList = [...tasks];
+        [updatedTaskList[index], updatedTaskList[index-1]] =
+        [updatedTaskList[index - 1], updatedTaskList[index]];
+        setTasks(updatedTaskList);
+     }
  }
 
- function moveTaskDown(id) {
-     
+ function moveTaskDown(index) {
+    if (index > tasks.length - 1) {
+        const updatedTaskList = [...tasks];
+        [updatedTaskList[index], updatedTaskList[index+1]] =
+        [updatedTaskList[index + 1], updatedTaskList[index]];
+        setTasks(updatedTaskList);
  }
- function toggleCompleted(id) {
-    setTasks(tasks.map(task => {
-        if (task.id === id) {
-            if (!task.completed) {
-                setPoint(point + task.point); // adds points to point tracker
-            }
-        return {...task, completed: !task.completed};
-        } else {
-        return task;
-        } 
-        }));
- }
+}
+
+
  return (
  <div className='task-list'>
     <h1>Task List</h1>
@@ -72,22 +70,22 @@ function addTask() {
         </button>
     </div>
     <ol>
-        {tasks.map((task, id) => 
-            <li key = {task.id}>
+        {tasks.map((task, index) => 
+            <li key = {index}>
                 <span className='task-name'>{task.text}</span>
                 <button 
-                    className='delete-task-button'
-                    onClick={() => deleteTask(task.id)}>
-                    Delete Task
+                    className='complete-task-button'
+                    onClick={() => completeTask(index)}>
+                    Complete Task
                 </button>
                 <button 
                     className='move-button'
-                    onClick={() => moveTaskUp(task.id)}>
+                    onClick={() => moveTaskUp(index)}>
                     👆
                 </button>
                 <button 
                     className='move-button'
-                    onClick={() => moveTaskDown(task.id)}>
+                    onClick={() => moveTaskDown(index)}>
                     👇
                 </button>
                 <span className='taskPoints'>{"10 ⭐️"}</span>
@@ -96,8 +94,9 @@ function addTask() {
     </ol>
  </div>
  );
-
-{/*  {tasks.map((task) => (
+}
+ 
+/*  {tasks.map((task) => (
         <TaskItem
         key={task.id}
         task={task}
@@ -119,7 +118,6 @@ function addTask() {
         Add Task
         </button>
     </form>
- </div> */}
-}
+ </div> */
 
 export default TaskList;

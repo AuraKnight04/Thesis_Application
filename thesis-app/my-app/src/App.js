@@ -33,10 +33,9 @@ function App() {
       <h1 className = "title">Gamified Task List</h1>
       </div>
       <div className='container'>
-      <TaskList />
+      <TaskList handleIncrement={handleIncrement}/>
       <PointTracker pointValue={pointValue}/>
       <TaskCompletionTracker taskValue={taskValue} />
-      <button onClick={handleIncrement}>Task Completed</button>
       </div>
     </div>
   );
