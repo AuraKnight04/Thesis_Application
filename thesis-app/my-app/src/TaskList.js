@@ -90,6 +90,7 @@ function addTask() {
                     onClick={() => moveTaskDown(task.id)}>
                     👇
                 </button>
+                <span className='taskPoints'>{"10 ⭐️"}</span>
             </li>
         )}   
     </ol>

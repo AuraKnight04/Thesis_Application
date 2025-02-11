@@ -3,18 +3,22 @@ import { useState } from 'react';
 import TaskList from './TaskList';
 import PointTracker from './PointTracker';
 import TaskCompletionTracker from './TaskCompletionTracker';
-import Popup from 'reactjs-Popup';
+import Popup from 'reactjs-popup';
 import './App.css';
 
 function App() {
   const [pointValue, setPointCount] = useState(0);
   const [taskValue, setTaskValue] = useState(0);
 
-  const encouragement = () => {
-    <Popup trigger = {pointValue == (pointValue + 5) || taskValue == (taskValue + 5)} position= "center">
-      <div>Good job on completing {taskvlaue} tasks!</div>
+  /* const Encouragement = () => {
+    console.log('Condition:', (pointValue % 5 === 0) || (taskValue % 5 === 0));
+    return (
+    <Popup trigger = {pointValue % 5 ===0 || taskValue % 5 === 0} position= "center">
+      <div>Good job on completing {taskValue} tasks!</div>
       </Popup>
-  };
+  )
+};
+      */
 
   const handleIncrement = () => {
     console.log('Task value:', taskValue);
@@ -23,22 +27,16 @@ function App() {
     setTaskValue(taskValue + 1);
   };
 
-  if 
-
-
   return (
-    <div className="App">"
+    <div className="App">
     <div>
-      <encouragement>
       <h1 className = "title">Gamified Task List</h1>
       </div>
       <div className='container'>
       <TaskList />
-      
       <PointTracker pointValue={pointValue}/>
       <TaskCompletionTracker taskValue={taskValue} />
       <button onClick={handleIncrement}>Task Completed</button>
-      
       </div>
     </div>
   );

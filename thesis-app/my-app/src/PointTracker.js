@@ -10,7 +10,7 @@ function PointTracker({pointValue}) {
     return (
         <div className='point-tracker'>
             <h1>Point Tracker</h1>
-            <h1 className='points'>Points: {pointValue}</h1>
+            <h1 className='points'>Points: ⭐️ {pointValue}</h1>
         </div>
     )
 }
