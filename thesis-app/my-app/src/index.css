@@ -30,9 +30,6 @@ body {
   background-color: #004aad;
 }
 
-
-
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -45,14 +42,6 @@ code {
   margin-top: 100px;
 }
 
-
-.Task-Completion-tracker, .point-tracker, .task-list {
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
 .task-list {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -79,7 +68,7 @@ h1  {
 }
 
 button {
-  font-size: 10px;
+  font-size: 15px;
   font-weight: bold;
   padding: 10px 20px;
   color: white;
@@ -123,6 +112,12 @@ button:hover {
   background-color: #1976D2;
 }
 
+.delete-task-button, .move-button {
+  padding: 8px 12px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
 input [type="text"] {
   padding: 10px;
   font-size: 16px;
@@ -155,7 +150,7 @@ input [type="text"] {
   text-align: center;
 }
 
-.point-increment-button {
+/*.point-increment-button {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
@@ -163,6 +158,7 @@ input [type="text"] {
   text-align: right;
   background-color: green;
 }
+  */
 
 .Task-Completion-tracker {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -180,6 +176,14 @@ input [type="text"] {
   display: inline-block;
 }
 
+.Task-Completion-tracker, .point-tracker, .task-list {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .tasks {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -188,14 +192,14 @@ input [type="text"] {
   text-align: center;
 }
 
-.task-increment-button {
+/*.task-increment-button {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
   font-size : 10px;
   text-align: right;
   background-color: green;
-}
+}*/
 
 ol {
   padding: 0;
@@ -205,7 +209,7 @@ li{
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
-font-size: 15px;
+font-size: 32px;
 font-weight: bold;
 padding: 15px;
 color: white;
@@ -213,21 +217,16 @@ background-color: #5ce1e6;
 border-radius: 5px;
 margin-bottom: 10px;
 border: 3px solid #004aad;
-border-radius: 4px;
 display: flex;
 align-items: center;
 }
 
-.text {
-  flex: 1;
-}
 
-.delete-task-button, .move-button {
-  padding: 8px 12px;
-  font-size: 14px;
-  margin-left: 10px;
-}
 
+
+
+
+/*popup css*/
 .encouragement {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

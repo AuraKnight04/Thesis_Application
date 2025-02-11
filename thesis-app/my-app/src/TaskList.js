@@ -4,8 +4,8 @@ import App from "./App.js";
 
 function TaskList({handleIncrement}) {
     // import the handle increment function from App.js so that in the Complete Task function it will also increment the point and task values
-    const [tasks, setTasks] = useState(["Task 1", "Task 2", "Task 3"]);
-    const [text, setText] = useState('');
+    const [tasks, setTasks] = useState([]);
+    const [taskText, setTaskText] = useState('');
     const [point, setPoint] = useState(0);
 
 
@@ -17,10 +17,12 @@ function addTask() {
           point: 10,
           completed: false
         };*/  
-        if (text.trim() !== ""){
-            setTasks(t =>[...t, text]);
-            setText("");
+        
+        if (taskText.trim() !== ""){  
+            setTasks(t =>[...t, taskText]);
+            setTaskText("");
         }
+        console.log("taskname: ",taskText);
       }
  function completeTask(index) {
     const  updatedTaskList = tasks.filter((element, i) => i !== index);
@@ -29,7 +31,7 @@ function addTask() {
  }
 
  function handleChange(event) {
-    setText(event.target.value);
+    setTaskText(event.target.value);
  }
 
 
@@ -43,7 +45,7 @@ function addTask() {
  }
 
  function moveTaskDown(index) {
-    if (index > tasks.length - 1) {
+    if (index < tasks.length - 1) {
         const updatedTaskList = [...tasks];
         [updatedTaskList[index], updatedTaskList[index+1]] =
         [updatedTaskList[index + 1], updatedTaskList[index]];
@@ -55,12 +57,11 @@ function addTask() {
  return (
  <div className='task-list'>
     <h1>Task List</h1>
-
     <div>
         <input 
         type = "text"
         placeholder='Enter a Task'
-        value = {text}
+        value = {taskText}
         onChange = {handleChange}
         />
         <button
@@ -72,7 +73,7 @@ function addTask() {
     <ol>
         {tasks.map((task, index) => 
             <li key = {index}>
-                <span className='task-name'>{task.text}</span>
+                <span className='task-name'>{task}</span>
                 <button 
                     className='complete-task-button'
                     onClick={() => completeTask(index)}>
@@ -88,7 +89,7 @@ function addTask() {
                     onClick={() => moveTaskDown(index)}>
                     👇
                 </button>
-                <span className='taskPoints'>{"10 ⭐️"}</span>
+                <span className='task-points'>{"10 ⭐️"}</span>
             </li>
         )}   
     </ol>
@@ -96,28 +97,5 @@ function addTask() {
  );
 }
  
-/*  {tasks.map((task) => (
-        <TaskItem
-        key={task.id}
-        task={task}
-        deleteTask={deleteTask}
-        toggleCompleted = {toggleCompleted}
-        />
-    ))}
-    <form>
-        <input
-        type = "text"
-        value = {point}
-        onChange = {e => setPoint(e.target.value)}
-        placeholder="Task Name"
-        />
-        <button type = "submit" onClick={(e) => {
-            e.preventDefault();
-            addTask(text);
-        }}>
-        Add Task
-        </button>
-    </form>
- </div> */
 
 export default TaskList;
