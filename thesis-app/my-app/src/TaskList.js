@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import TaskItem from './TaskItem';
-import App from "./App.js";
 
-function TaskList({handleIncrement}) {
+
+export default function TaskList({handleIncrement}) {
     // import the handle increment function from App.js so that in the Complete Task function it will also increment the point and task values
     const [tasks, setTasks] = useState([]);
     const [taskText, setTaskText] = useState('');
@@ -11,6 +11,13 @@ function TaskList({handleIncrement}) {
 
     // https://react.dev/reference/react-dom/components/input
     // https://www.youtube.com/watch?v=9wiWzu_tRB0&list=WL&index=1&t=183s 
+
+
+    const handleEnterKey = (event) => {
+        if (event.key === 'Enter') {
+          addTask();
+        }
+      };
 function addTask() {
         /*const text = {
           id: Date.now(),
@@ -63,6 +70,7 @@ function addTask() {
         placeholder='Enter a Task'
         value = {taskText}
         onChange = {handleChange}
+        onKeyDown={handleEnterKey}
         />
         <button
             className='add-task-button'
@@ -97,5 +105,3 @@ function addTask() {
  );
 }
  
-
-export default TaskList;

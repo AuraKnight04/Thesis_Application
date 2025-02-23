@@ -1,6 +1,6 @@
-import React , {useState} from 'react';
+import React from 'react';
 
-function PointTracker({pointValue}) {
+export default function PointTracker({pointValue}) {
   /*  const[count, setCount] = useState(0);
     function addPoint() {
         setCount(count + 10);
@@ -14,5 +14,3 @@ function PointTracker({pointValue}) {
         </div>
     )
 }
-
-export default PointTracker;

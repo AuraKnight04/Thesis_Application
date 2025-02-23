@@ -1,6 +1,6 @@
-import React , {useState} from 'react';
+import React  from 'react';
 
-function TaskCompletionTracker({taskValue}) {
+export default function TaskCompletionTracker({taskValue}) {
    /* const[initialTaskValue, setTaskValue] = useState(0);
      function addTaskValue() {
         setTaskValue(initialTaskValue + 1);
@@ -15,5 +15,3 @@ function TaskCompletionTracker({taskValue}) {
         </div>
     )
 }
-
-export default TaskCompletionTracker;
