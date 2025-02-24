@@ -4,6 +4,7 @@ import TaskList from './TaskList';
 import PointTracker from './PointTracker';
 import TaskCompletionTracker from './TaskCompletionTracker';
 import 'reactjs-popup/dist/index.css';
+import './index.css';
 import './App.css';
 
 export default function App() {
@@ -55,7 +56,6 @@ export default function App() {
       <PointTracker pointValue={pointValue}/>
       <TaskCompletionTracker taskValue={taskValue} />
     </div>
-    <div>
            {isPopupOpen && (
             <Popup open={isPopupOpen} onClose={() => setIsPopupOpen(false)} 
             position="center">
@@ -65,7 +65,6 @@ export default function App() {
               </div>
           </Popup>
            )}
-        </div>
     </div>
   );
 }
