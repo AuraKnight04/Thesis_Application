@@ -1,0 +1,127 @@
+import React, { useState, useEffect } from 'react';
+import Popup from 'reactjs-popup';
+import TaskList from './TaskList';
+import PointTracker from './PointTracker';
+import TaskCompletionTracker from './TaskCompletionTracker';
+
+import './App.css';
+
+export default function App() {
+  const [pointValue, setPointCount] = useState(0);
+  const [taskValue, setTaskValue] = useState(0);
+const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const popupHeader = `Good job on completing  ${taskValue}  tasks!`;
+  const popupContent = `Keep up the good work, you are on a roll!`;
+
+  const handleIncrement = () => {
+    console.log('Task value:', taskValue);
+    console.log('Points:', pointValue);
+    setPointCount(pointValue + 10);
+    setTaskValue(taskValue + 1);
+  };  
+  /**
+   * Determines if happiness should be increased based on pointValue or taskValue.
+   * @returns {boolean} True if either pointValue or taskValue is even, false otherwise.
+   */ 
+   const increaseHappiness = () => {
+    if (taskValue % 2 === 0) {
+      isPopupOpen(true);
+    };
+  };
+
+  useEffect(() => {
+    if (taskValue % 2 === 0) {
+      setIsPopupOpen(true);
+      const timer = setTimeout(() => {
+        setIsPopupOpen(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [taskValue]);
+
+  return (
+    <div className="App">
+    <div>
+      <h1 className = "title">Gamified Task List</h1>
+      </div>
+      <div className='container'>
+      <TaskList handleIncrement={handleIncrement}/>
+      <PointTracker pointValue={pointValue}/>
+      <TaskCompletionTracker taskValue={taskValue} />
+    </div>
+    <div className='encouragement'>
+           {taskValue % 2 === 0 && isPopupOpen &&(
+            <Popup position= "center">
+              <h4>{popupHeader}</h4>
+              <div>{popupContent}</div>
+          </Popup>
+           )}
+        </div>
+    </div>
+  );
+}
+
+
+//////
+
+
+import React, { useState, useEffect } from 'react';
+import Popup from 'reactjs-popup';
+import TaskList from './TaskList';
+import PointTracker from './PointTracker';
+import TaskCompletionTracker from './TaskCompletionTracker';
+
+import './App.css';
+
+export default function App() {
+  const [pointValue, setPointCount] = useState(0);
+  const [taskValue, setTaskValue] = useState(0);
+ // const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const popupHeader = `Good job on completing ${taskValue} tasks!`;
+  const popupContent = `Keep up the good work, you are on a roll!`;
+
+  const handleIncrement = () => {
+    console.log('Task value:', taskValue);
+    console.log('Points:', pointValue);
+    setPointCount(pointValue + 10);
+    setTaskValue(taskValue + 1);
+  };
+
+  /**
+   * Determines if happiness should be increased based on taskValue.
+   * @returns {boolean} True if taskValue is a multiple of 2, false otherwise.
+   */
+
+
+ /* useEffect(() => {
+    if (taskValue % 2 === 0) {
+      setIsPopupOpen(true);
+      console.log('Popup is open');
+      const timer = setTimeout(() => {
+        setIsPopupOpen(false);
+      }, 3000); // Close the popup after 3 seconds
+      return () => clearTimeout(timer);
+    }
+  }, [taskValue]);*/ 
+
+  return (
+    <div className="App">
+      <div>
+        <h1 className="title">Gamified Task List</h1>
+      </div>
+      <div className="container">
+        <TaskList handleIncrement={handleIncrement} />
+        <PointTracker pointValue={pointValue} />
+        <TaskCompletionTracker taskValue={taskValue} />
+      </div>
+      <div className="encouragement">
+        {taskValue % 2 === 0 &&(
+          <Popup position="center">
+            <h4>{popupHeader}</h4>
+            <div>{popupContent}</div>
+          </Popup>
+        )}
+      </div>
+    </div>
+  );
+}

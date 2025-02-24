@@ -12,24 +12,14 @@ export default function App() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const popupHeader = `Good job on completing  ${taskValue}  tasks!`;
   const popupContent = `Keep up the good work, you are on a roll!`;
-/* const Encouragement = () => {
-    console.log('Condition:', (pointValue % 5 === 0) || (taskValue % 5 === 0));
-    return (
-    <Popup trigger = {pointValue % 5 ===0 || taskValue % 5 === 0} position= "center">
-      <div>Good job on completing {taskValue} tasks!</div>
-      </Popup>
-  )
-};
-      */
+
 
   const handleIncrement = () => {
     console.log('Task value:', taskValue);
     console.log('Points:', pointValue);
     setPointCount(pointValue + 10);
     setTaskValue(taskValue + 1);
-    if ((taskValue + 1) % 5 === 0 || (pointValue + 10) % 5 === 0) {
-      setIsPopupOpen(true);
-    }
+    increaseHappiness();
   };
 
   useEffect(() => {
@@ -43,15 +33,14 @@ export default function App() {
 
   /**
    * Determines if happiness should be increased based on pointValue or taskValue.
-   * @returns {boolean} True if either pointValue or taskValue is even, false otherwise.
+   * @returns {boolean} True if taskValue is even
    */
   const increaseHappiness = () => {
     // Check if  taskValue is even
-    if (taskValue % 2 === 0) {
-      return true;
-    }
-    else if (pointValue % 2 !== 0) {
-      return false;
+    if ((taskValue + 1) % 2 === 0) {
+       setIsPopupOpen(true);
+       //this is for testing purposes
+       console.log('increasehappiness');
     }
   }
 
@@ -77,4 +66,3 @@ export default function App() {
     </div>
   );
 }
-
