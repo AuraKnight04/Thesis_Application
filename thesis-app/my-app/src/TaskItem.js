@@ -1,6 +1,6 @@
 import React , {useState} from 'react';
 
-
+// after properly working on the tast list the tasks are made directly in the task list not in the task item
 function TaskItem({task, toggleCompleted}) {
     const [isCompleted, setIsCompleted] = useState(false);
 

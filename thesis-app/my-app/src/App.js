@@ -3,7 +3,7 @@ import Popup from 'reactjs-popup';
 import TaskList from './TaskList';
 import PointTracker from './PointTracker';
 import TaskCompletionTracker from './TaskCompletionTracker';
-
+import 'reactjs-popup/dist/index.css';
 import './App.css';
 
 export default function App() {
@@ -26,7 +26,7 @@ export default function App() {
     if (isPopupOpen) {
       const timer = setTimeout(() => {
         setIsPopupOpen(false);
-      }, 3000);
+      }, 6000);
       return () => clearTimeout(timer);
     }
   }, [isPopupOpen]);
@@ -55,11 +55,14 @@ export default function App() {
       <PointTracker pointValue={pointValue}/>
       <TaskCompletionTracker taskValue={taskValue} />
     </div>
-    <div className='encouragement'>
+    <div>
            {isPopupOpen && (
-            <Popup open={isPopupOpen} onClose={() => setIsPopupOpen(false)} position="center">
+            <Popup open={isPopupOpen} onClose={() => setIsPopupOpen(false)} 
+            position="center">
+              <div className="encouragement-popup">
               <h4>{popupHeader}</h4>
               <div>{popupContent}</div>
+              </div>
           </Popup>
            )}
         </div>
