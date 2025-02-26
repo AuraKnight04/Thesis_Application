@@ -22,7 +22,6 @@ function addTask() {
           point: 10,
           completed: false
         };*/  
-        
         if (taskText.trim() !== ""){  
             setTasks(t =>[...t, taskText]);
             setTaskText("");

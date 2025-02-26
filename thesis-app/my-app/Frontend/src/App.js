@@ -3,6 +3,7 @@ import Popup from 'reactjs-popup';
 import TaskList from './TaskList';
 import PointTracker from './PointTracker';
 import TaskCompletionTracker from './TaskCompletionTracker';
+import Login from './Login';
 import 'reactjs-popup/dist/index.css';
 import './index.css';
 import './App.css';
@@ -48,6 +49,7 @@ export default function App() {
 
   return (
     <div className="App">
+      <Login/>
     <div>
       <h1 className = "title">Gamified Task List</h1>
       </div>
