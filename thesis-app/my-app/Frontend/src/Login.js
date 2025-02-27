@@ -17,7 +17,7 @@ export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loginStatus, setLoginStatus] = useState('');
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
 
     const handleEnterKey = (event) => {
         if (event.key === 'Enter') {

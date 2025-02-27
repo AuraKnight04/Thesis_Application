@@ -21,10 +21,40 @@ db.connect(function(err) {
     console.log('Connected to database with threadId: ' + db.threadId);
 });
 
-con.connect(function(err) {
-    if (err) throw err;
-    con.query("SELECT * FROM customers", function (err, result, fields) {
-      if (err) throw err;
-      console.log(result);
+// Use express.js to connect backend to frontend with API endpoints
+app.get('/api/users', (req, res) => {
+    db.query("SELECT userName, userPassword FROM Users", function (err, result, fields) {
+        if (err) {
+            console.error("errorr running query:" + err);
+            res.status(500).send('An error occurred');
+        } else {
+            res.send(result);
+        }
     });
-  });
+});
+
+
+const port = 3001;
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
+
+
+/*
+// https://www.w3schools.com/nodejs/nodejs_mysql_select.asp 
+    db.query("SELECT * FROM Users", function (err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+      });
+
+    db.query("SELECT userName, userPassword FROM Users", function (err, result, fields) {
+        if (err) throw err;
+        arr = [result]
+        console.log(result);
+        console.log(arr);
+      }
+    );
+
+    */
+
+

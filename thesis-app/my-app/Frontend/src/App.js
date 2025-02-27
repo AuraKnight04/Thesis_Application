@@ -56,12 +56,12 @@ export default function App() {
       <div className='container'>
       <TaskList handleIncrement={handleIncrement}/>
       <PointTracker pointValue={pointValue}/>
-      <TaskCompletionTracker taskValue={taskValue}
+      <TaskCompletionTracker taskValue={taskValue}/>
       <button
-      className="Log Progress"
-      onClick={() => setIsPopupOpen(true)}
-      />
-      />
+        className="Log Progress"
+        onClick={() => setIsPopupOpen(true)}>
+        Log Progress
+        </button>
     </div>
            {isPopupOpen && (
             <Popup open={isPopupOpen} onClose={() => setIsPopupOpen(false)} 
