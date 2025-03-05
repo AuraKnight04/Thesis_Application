@@ -33,14 +33,13 @@ app.get('/api/users', (req, res) => {
     });
 });
 
-
-const port = 3001;
+// this is to start the server on port 3001
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
 
-/*
+
 // https://www.w3schools.com/nodejs/nodejs_mysql_select.asp 
     db.query("SELECT * FROM Users", function (err, result, fields) {
         if (err) throw err;
@@ -55,6 +54,5 @@ app.listen(port, () => {
       }
     );
 
-    */
 
 
