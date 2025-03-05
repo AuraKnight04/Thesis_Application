@@ -12,6 +12,8 @@ import Axios from 'axios';
         // There userID / Username will then be kept on the corner of the screen showing who they are logged in as
         // When they logout their data  stored in the points and tasks area will be saved to the database in the dailyprogress table
 
+
+// https://apidog.com/blog/http-methods/ -- HTTP Methods
 export default function Login() {
 
     const [username, setUsername] = useState('');
@@ -21,7 +23,7 @@ export default function Login() {
 
     const handleEnterKey = (event) => {
         if (event.key === 'Enter') {
-          login();
+          signIn();
         }
       }
 
@@ -33,8 +35,19 @@ export default function Login() {
         setPassword(event.target.value);
       }
 
-      function login() {
-        console.log('Logging in...');
+      function signIn() {
+        fetch('/api/signin', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+            }) 
+            .then(response => response.json())
+            .then(data => {
+              console.log('Logging in');
+            })
+            .catch(error => console.error('Error:', error)); 
       }
 
 
@@ -59,7 +72,7 @@ export default function Login() {
                 </div>
                 <button
                     classname = 'login-button'
-                    onClick = {login}>
+                    onClick = {signIn}>
                     Login
                 </button>
             </div>

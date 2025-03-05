@@ -13,6 +13,11 @@ const db = mysql.createConnection({
     database: 'Gamified_ToDoList_DB'
 });
 
+app.use((req, res, next) => {
+    res.header("Content-Security-Policy", "img-src 'self'; default-src 'self';");
+    next();
+  });
+
 db.connect(function(err) {
     if (err) {
         console.error('Database connection failed: ' + err.stack);
@@ -22,13 +27,24 @@ db.connect(function(err) {
 });
 
 // Use express.js to connect backend to frontend with API endpoints
-app.get('/api/users', (req, res) => {
+app.post('/api/signin', (req, res) => {
+    const inputUsername = req.body.username;
+    const inputPassword = req.body.password;
     db.query("SELECT userName, userPassword FROM Users", function (err, result, fields) {
-        if (err) {
-            console.error("errorr running query:" + err);
-            res.status(500).send('An error occurred');
+        if (err) throw err;
+        arr = [result];
+        let match = false;
+        for (i = 0; i <= arr.length(); i++) {
+            if (arr[i].userName === inputUsername && arr[i].userPassword === inputPassword) {
+                console.log("Username & Password Match");
+                match = true;
+                break;
+            } 
+        }
+        if (match){
+            res.send("Sign-in Successful");
         } else {
-            res.send(result);
+            res.send("Sign-in Unsuccessful");
         }
     });
 });
