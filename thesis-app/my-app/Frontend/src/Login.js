@@ -36,12 +36,12 @@ export default function Login() {
       }
 
       function signIn() {
-        fetch('/api/signin', {
+        fetch('http://localhost:3002/api/signin', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({username, password }),
             }) 
             .then(response => response.json())
             .then(data => {
@@ -72,7 +72,7 @@ export default function Login() {
                 </div>
                 <button
                     className = 'login-button'
-                    onClick = {signIn}>
+                    onClick = {signIn()}>
                     Login
                 </button>
             </div>
