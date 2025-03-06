@@ -15,7 +15,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node thesis-app/my-app/Backend/server.js & npm run start-react",
+    "start": "cd ../Backend && node server.js & cd ../Frontend && npm run start-react",
+    "start-react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

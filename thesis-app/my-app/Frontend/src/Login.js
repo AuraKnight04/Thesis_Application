@@ -66,12 +66,12 @@ export default function Login() {
                     type = "text"
                     placeholder = "Password"
                     value = {password}
-                    onchange = {handleChangePW}
+                    onChange = {handleChangePW}
                     onKeyDown = {handleEnterKey}
                 />
                 </div>
                 <button
-                    classname = 'login-button'
+                    className = 'login-button'
                     onClick = {signIn}>
                     Login
                 </button>

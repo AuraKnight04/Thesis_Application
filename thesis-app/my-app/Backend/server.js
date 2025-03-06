@@ -1,10 +1,16 @@
 const express = require('express');
 const app = express();
-const port = 3001;
+const port = 3002;
 const mysql = require('mysql');
 
+// This is to allow the server to parse JSON data
+app.use(express.json());
 
 // npmjs.com reference 
+// this is to start the server on port 3002
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
 
 const db = mysql.createConnection({
     host: 'db-thesis-app.cjqoma42a22a.us-east-2.rds.amazonaws.com',
@@ -32,10 +38,9 @@ app.post('/api/signin', (req, res) => {
     const inputPassword = req.body.password;
     db.query("SELECT userName, userPassword FROM Users", function (err, result, fields) {
         if (err) throw err;
-        arr = [result];
         let match = false;
-        for (i = 0; i <= arr.length(); i++) {
-            if (arr[i].userName === inputUsername && arr[i].userPassword === inputPassword) {
+        for (i = 0; i <= result.length; i++) {
+            if (result[i].userName === inputUsername && result[i].userPassword === inputPassword) {
                 console.log("Username & Password Match");
                 match = true;
                 break;
@@ -49,13 +54,9 @@ app.post('/api/signin', (req, res) => {
     });
 });
 
-// this is to start the server on port 3001
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
 
 
-
+/*
 // https://www.w3schools.com/nodejs/nodejs_mysql_select.asp 
     db.query("SELECT * FROM Users", function (err, result, fields) {
         if (err) throw err;
@@ -69,6 +70,7 @@ app.listen(port, () => {
         console.log(arr);
       }
     );
+    */
 
 
 
