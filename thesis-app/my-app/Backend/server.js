@@ -3,16 +3,6 @@ const app = express();
 const port = 3002;
 const mysql = require('mysql');
 
-// This is to allow the server to parse JSON data
-app.use(express.json());
-
-// npmjs.com reference 
-// this is to start the server on port 3002
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
-
-
 // Experienced CORS error which prevented the server from receiving data from the frontend
 // The following code will act as middleware: https://expressjs.com/en/resources/middleware/cors.html
 app.use((req, res, next) => {
@@ -21,6 +11,14 @@ app.use((req, res, next) => {
     next();
   });
 
+// This is to allow the server to parse JSON data
+app.use(express.json());
+
+// npmjs.com reference 
+// this is to start the server on port 3002
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
 
 const db = mysql.createConnection({
     host: 'db-thesis-app.cjqoma42a22a.us-east-2.rds.amazonaws.com',
