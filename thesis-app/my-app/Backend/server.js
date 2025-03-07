@@ -58,9 +58,9 @@ app.post('/api/signin', (req, res) => {
             } 
         }
         if (match){
-            res.json(match);
+            res.json({success: true, message: "Sign in successful"});
         } else {
-            res.send(match);
+            res.json({success: false, message: "Sign in failed"});
         }
     });
 });
