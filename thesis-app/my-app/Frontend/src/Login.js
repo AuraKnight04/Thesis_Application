@@ -45,7 +45,15 @@ export default function Login() {
             }) 
             .then(response => response.json())
             .then(data => {
-              console.log('Logging in');
+              if (data.success) {
+                setData(data);
+                setLoginStatus('Login Successful');
+                console.log(loginStatus);
+              } else {
+                setData(data);
+                setLoginStatus('Login Failed');
+                console.log(loginStatus);
+              }
             }) 
             .catch(error => console.error('Error:', error)); 
       }

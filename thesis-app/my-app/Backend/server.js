@@ -50,7 +50,7 @@ app.post('/api/signin', (req, res) => {
     db.query("SELECT userName, userPassword FROM Users", function (err, result, fields) {
         if (err) throw err;
         let match = false;
-        for (i = 0; i <= result.length; i++) {
+        for (i = 0; i < result.length; i++) {
             if (result[i].userName === inputUsername && result[i].userPassword === inputPassword) {
                 console.log("Username & Password Match");
                 match = true;
@@ -58,9 +58,9 @@ app.post('/api/signin', (req, res) => {
             } 
         }
         if (match){
-            res.send("Sign-in Successful");
+            res.json(match);
         } else {
-            res.send("Sign-in Unsuccessful");
+            res.send(match);
         }
     });
 });
