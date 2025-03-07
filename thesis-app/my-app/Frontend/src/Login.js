@@ -46,7 +46,7 @@ export default function Login() {
             .then(response => response.json())
             .then(data => {
               console.log('Logging in');
-            })
+            }) 
             .catch(error => console.error('Error:', error)); 
       }
 
@@ -72,7 +72,7 @@ export default function Login() {
                 </div>
                 <button
                     className = 'login-button'
-                    onClick = {signIn()}>
+                    onClick = {signIn}>
                     Login
                 </button>
             </div>
