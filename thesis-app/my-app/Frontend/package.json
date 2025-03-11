@@ -1,5 +1,6 @@
 {
   "name": "my-app",
+  "homepage": "https://AuraKnight04.github.io/Thesis_Application",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,6 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.8.1",
+    "gh-pages": "^6.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.2.0",
@@ -15,7 +17,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start-node": "cd ..\\Backend && node server.js", 
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start-node": "cd ..\\Backend && node server.js",
     "start-react": "react-scripts start",
     "start": "npm run start-node & npm run start-react",
     "build": "react-scripts build",
