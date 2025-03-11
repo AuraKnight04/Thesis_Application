@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Thesis_Application/static/css/main.55c61605.css",
+    "main.js": "/Thesis_Application/static/js/main.c60603d5.js",
+    "static/js/453.ed3810f9.chunk.js": "/Thesis_Application/static/js/453.ed3810f9.chunk.js",
+    "index.html": "/Thesis_Application/index.html",
+    "main.55c61605.css.map": "/Thesis_Application/static/css/main.55c61605.css.map",
+    "main.c60603d5.js.map": "/Thesis_Application/static/js/main.c60603d5.js.map",
+    "453.ed3810f9.chunk.js.map": "/Thesis_Application/static/js/453.ed3810f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.55c61605.css",
+    "static/js/main.c60603d5.js"
+  ]
+}
