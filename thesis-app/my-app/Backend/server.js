@@ -2,14 +2,24 @@ const express = require('express');
 const app = express();
 const port = 3003;
 const mysql = require('mysql');
+const cors = require('cors');
+
+
+// expressjs.com reference -> middleware CORS
+app.use(cors());
 
 // This is to allow the server to parse JSON data
 app.use(express.json());
 
+app.get('/products/:id', (req, res, next) => {
+    res.json({msg: 'This is CORS-enabled for all origins!'});
+});
+
+
 // npmjs.com reference 
-// this is to start the server on port 3002
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+// this is to start the server on port 3003
+app.listen(port,  () => {
+    console.log(`Server is running on port ${port}`)
 });
 
 
@@ -65,6 +75,22 @@ app.post('/api/signin', (req, res) => {
     });
 });
 
+app.post('/api/logOut', (req, res) => {
+    const inputUsername = req.body.username;
+    const inputTaskValue = req.body.taskValue;
+    const inputPointValue = req.body.pointValue;
+    const inputDate = req.body.currentDate;
+    db.query("SELECT userID FROM Users WHERE userName = ?", [inputUsername], function (err, result, fields) {
+        if (err) throw err;
+        let userID = result[0].userID;
+        console.log("User ID: ", userID);
+    });
+    db.query("INSERT INTO DailyProgress (progressDate, pointsEarned, tasksCompleted, userID) VALUES (?, ?, ?, ?)",function (err, result) {
+        if (err) res.json({message: "Data Insertion Failed"});
+        console.log("Data Inserted");
+    });
+    res.json({message:"Data Inserted"});
+});
 
 
 /*
