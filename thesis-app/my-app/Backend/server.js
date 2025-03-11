@@ -4,7 +4,10 @@ const port = 3003;
 const mysql = require('mysql');
 const cors = require('cors');
 const sqlError = 'Error executing query: ';
+const dotenv = require('dotenv');
 
+dotenv.config();
+console.log(process.env);
 // expressjs.com reference -> middleware CORS
 app.use(cors());
 
@@ -36,7 +39,7 @@ app.use((req, res, next) => {
 const db = mysql.createConnection({
     host: 'db-thesis-app.cjqoma42a22a.us-east-2.rds.amazonaws.com',
     user: 'admin',
-    password: '49311$%^Pr',
+    password:'49311$%^Pr',
     database: 'Gamified_ToDoList_DB'
 });
 
