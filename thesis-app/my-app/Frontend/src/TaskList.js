@@ -4,7 +4,6 @@ export default function TaskList({handleIncrement}) {
     // import the handle increment function from App.js so that in the Complete Task function it will also increment the point and task values
     const [tasks, setTasks] = useState([]);
     const [taskText, setTaskText] = useState('');
-    const [point, setPoint] = useState(0);
 
 
     // https://react.dev/reference/react-dom/components/input
