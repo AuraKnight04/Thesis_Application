@@ -4,10 +4,9 @@ const port = 3003;
 const mysql = require('mysql');
 const cors = require('cors');
 const sqlError = 'Error executing query: ';
-const dotenv = require('dotenv');
+// This is to allow the server to access the .env file
+require('dotenv').config({ path: '../.env' });
 
-dotenv.config();
-console.log(process.env);
 // expressjs.com reference -> middleware CORS
 app.use(cors());
 
@@ -37,10 +36,10 @@ app.use((req, res, next) => {
 
 
 const db = mysql.createConnection({
-    host: 'db-thesis-app.cjqoma42a22a.us-east-2.rds.amazonaws.com',
-    user: 'admin',
-    password:'49311$%^Pr',
-    database: 'Gamified_ToDoList_DB'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 app.use((req, res, next) => {
