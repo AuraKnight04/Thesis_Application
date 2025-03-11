@@ -3,7 +3,7 @@ const app = express();
 const port = 3003;
 const mysql = require('mysql');
 const cors = require('cors');
-
+const sqlError = 'Error executing query: ';
 
 // expressjs.com reference -> middleware CORS
 app.use(cors());
@@ -74,22 +74,31 @@ app.post('/api/signin', (req, res) => {
         }
     });
 });
-
+// Had to fix this code to make it function
+    // This code was sending out multiple json responses before the function was completed
 app.post('/api/logOut', (req, res) => {
     const inputUsername = req.body.username;
     const inputTaskValue = req.body.taskValue;
     const inputPointValue = req.body.pointValue;
     const inputDate = req.body.currentDate;
     db.query("SELECT userID FROM Users WHERE userName = ?", [inputUsername], function (err, result, fields) {
-        if (err) throw err;
+        if (err) {
+            console.error(sqlError + err.stack);
+            res.json({success: false, message: 'Server Error'});
+            return;
+        }
         let userID = result[0].userID;
         console.log("User ID: ", userID);
+        db.query("INSERT INTO DailyProgress (progressDate, pointsEarned, tasksCompleted, userID) VALUES (?, ?, ?, ?)", [inputDate, inputPointValue, inputTaskValue, userID], function (err, result) {
+            if (err) {
+                console.error(sqlError + err.stack);
+                res.json({success: false, message: "Data Insertion Failed"});
+                return;
+            }
+            console.log("Data Inserted");
+            res.json({message:"Data Inserted"});
+        });
     });
-    db.query("INSERT INTO DailyProgress (progressDate, pointsEarned, tasksCompleted, userID) VALUES (?, ?, ?, ?)",function (err, result) {
-        if (err) res.json({message: "Data Insertion Failed"});
-        console.log("Data Inserted");
-    });
-    res.json({message:"Data Inserted"});
 });
 
 
