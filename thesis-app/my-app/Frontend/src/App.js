@@ -83,7 +83,8 @@ export default function App() {
       <TaskList handleIncrement={handleIncrement}/>
       <PointTracker pointValue={pointValue}/>
       <TaskCompletionTracker taskValue={taskValue}/>
-         <div>
+         <div className='logOut'>
+        <h1>Log Out</h1>
         <input 
         type = "text"
         placeholder='Enter your username'
@@ -99,7 +100,6 @@ export default function App() {
               logOut();
               }}>
               Log out Progress
-            Add Task
         </button>
       </div>
     </div> {isPopupOpen && (
