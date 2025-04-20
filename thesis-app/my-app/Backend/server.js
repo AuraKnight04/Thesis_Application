@@ -8,7 +8,11 @@ const sqlError = 'Error executing query: ';
 require('dotenv').config({ path: '../.env' });
 
 // expressjs.com reference -> middleware CORS
-app.use(cors());
+app.use(cors({
+    origin: '*', // Allow all origins
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow all HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
+}));
 
 // This is to allow the server to parse JSON data
 app.use(express.json());
@@ -40,6 +44,7 @@ const db = mysql.createConnection({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
+    port: process.env.DB_PORT
 });
 
 app.use((req, res, next) => {
@@ -49,7 +54,8 @@ app.use((req, res, next) => {
 
 db.connect(function(err) {
     if (err) {
-        console.error('Database connection failed: ' + err.stack);
+        console.error('Database connection failed: ' + err.message);
+        process.exit(1); // Exit the process if the connection fails
         return;
     }
     console.log('Connected to database with threadId: ' + db.threadId);
