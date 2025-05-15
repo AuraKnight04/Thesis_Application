@@ -63,7 +63,7 @@ export default function App() {
   };
 
   const logOut = () => {
-    fetch('http://localhost:3003/api/logOut', {
+    fetch('https://thesis-application-backend.onrender.com/api/logOut', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
