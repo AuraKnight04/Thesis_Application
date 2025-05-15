@@ -1,6 +1,6 @@
 {
   "name": "my-app",
-  "homepage": "https://AuraKnight04.github.io/Thesis_Application",
+  "homepage": "/Thesis_Application",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,7 +18,6 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start-node": "cd ..\\Backend && node server.js",
     "start-react": "react-scripts start",
     "start": "npm run start-node & npm run start-react",
