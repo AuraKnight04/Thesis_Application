@@ -18,7 +18,6 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start-node": "cd ..\\Backend && node server.js",
     "start-react": "react-scripts start",
     "start": "npm run start-node & npm run start-react",
