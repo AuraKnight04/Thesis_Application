@@ -1,6 +1,6 @@
 {
   "name": "my-app",
-  "homepage": "https://AuraKnight04.github.io/Thesis_Application",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
