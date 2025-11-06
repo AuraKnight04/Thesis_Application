@@ -17,6 +17,17 @@ app.use(cors({
 // This is to allow the server to parse JSON data
 app.use(express.json());
 
+// --- Timing middleware for performance logs ---
+app.use((req, res, next) => {
+  const start = Date.now();
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    console.log(`${req.method} ${req.originalUrl} -> ${res.statusCode} [${duration}ms]`);
+  });
+  next();
+});
+
+
 app.get('/products/:id', (req, res, next) => {
     res.json({msg: 'This is CORS-enabled for all origins!'});
 });
